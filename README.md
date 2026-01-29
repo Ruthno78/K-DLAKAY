@@ -32,32 +32,32 @@ Tout kontni an prezante an *kreyòl*, ak egzanp pratik, pou rann aprantisaj la *
 
 ### Devlopman Web
 
-#### HTML
+##### HTML
 
 * Estrikti yon paj web
 * Baliz (**tags**) esansyèl
 * Bon pratik **SEO debaz**
 
-#### CSS
+##### CSS
 
 * Stylisation paj web
 * Layout (**Flexbox**, **Grid**)
 * *Responsive design* (mobil & desktop)
 
-#### JavaScript (JS)
+##### JavaScript (JS)
 
 * Lojik ak entèraksyon
 * Manipilasyon **DOM**
 * Evènman (*click*, *input*, *submit*, elatriye)
 
-### Itilizasyon API
+#### Itilizasyon API
 
 * Ki sa **API** ye ak kijan li fonksyone
 * Konsomasyon API ak **Fetch**
 * **Async / Await**
 * Itilizasyon API nan **pwojè reyèl**
 
-### Evolisyon & Lang Avanse
+#### Evolisyon & Lang Avanse
 
 Apre ou fin metrize baz yo, **KÒDLAKAY** montre ou kijan pou:
 
@@ -81,7 +81,7 @@ Apre ou fin metrize baz yo, **KÒDLAKAY** montre ou kijan pou:
 * **Debitan** ki pa janm kode
 * **Etidyan**
 * **Jèn devlopè**
-* Nenpòt moun ki vle aprann pwogramasyon *lakay li*
+* Nenpòt moun ki vle aprann pwogramasyon an ayiti *lakay li* e pou li
 
 ---
 
