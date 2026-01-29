@@ -1,0 +1,119 @@
+<style>.konv-form {
+background: #f4faff; /* Limyè ak ap detann */
+border-radius: 12px; /* Bèl kwen awondi */
+padding: 20px;
+max-width: 500px;
+margin: auto;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Yon font plis profesyonèl */
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Yon ti lonbraj pou bay pwofondè */
+transition: box-shadow 0.3s ease;
+}
+.konv-form:hover {
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Yon efè limyè lè sourit pase */
+}
+.konv-form label,
+.konv-form input,
+.konv-form select,
+.konv-form button {
+display: block;
+width: 100%;
+margin-bottom: 10px;
+font-size: 16px;
+border: 1px solid #ccc;
+border-radius: 6px;
+padding: 8px 12px;
+box-sizing: border-box;
+transition: border-color 0.3s ease;
+}
+.konv-form input:focus,
+.konv-form select:focus,
+.konv-form button:focus {
+border-color: #66cc33;
+outline: none;
+}
+.konv-form button {
+background-color: #66cc33;
+color: white;
+border: none;
+cursor: pointer;
+font-weight: bold;
+transition: background-color 0.3s ease;
+}
+.konv-form button:hover {
+background-color: #559922;
+}
+#rezilta {
+font-size: 18px;
+color: #000;
+margin-top: 10px;
+font-weight: 600;
+}
+#eksplikasyon {
+margin-top: 15px;
+padding: 10px;
+background: #fffefa;
+border-left: 5px solid #66cc33;
+border-radius: 5px;
+color: #333;
+font-style: italic;
+line-height: 1.4;
+}</style>
+
+
+<div class="konv-form">
+  <h2>Kalkilatris Konvèsyon Ant SI ak IEC</h2>
+    <div id="rezilta"></div>
+  <div id="eksplikasyon"></div>
+  <label>Antre valè a:</label>
+  
+  <input type="number" id="valeur" placeholder="Egzanp: 500"><label>Inite aktyèl la:</label> <select id="from"> <option value="B">B (Byte)</option> <option value="kB">kB (Kilobyte)</option> <option value="MB">MB (Megabyte)</option> <option value="GB">GB (Gigabyte)</option> <option value="TB">TB (Terabyte)</option> <option value="KiB">KiB (Kibibyte)</option> <option value="MiB">MiB (Mebibyte)</option> <option value="GiB">GiB (Gibibyte)</option> <option value="TiB">TiB (Tebibyte)</option> </select>
+
+<label>Konvèti pou:</label> <select id="to"> <option value="B">B (Byte)</option> <option value="kB">kB (Kilobyte)</option> <option value="MB">MB (Megabyte)</option> <option value="GB">GB (Gigabyte)</option> <option value="TB">TB (Terabyte)</option> <option value="KiB">KiB (Kibibyte)</option> <option value="MiB">MiB (Mebibyte)</option> <option value="GiB">GiB (Gibibyte)</option> <option value="TiB">TiB (Tebibyte)</option> </select>
+
+<button onclick="konveti()">Konvèti</button>
+
+
+</div><script>
+const si = {
+  B: 1,
+  kB: 1000,
+  MB: 1000**2,
+  GB: 1000**3,
+  TB: 1000**4
+};
+const iec = {
+  B: 1,
+  KiB: 1024,
+  MiB: 1024**2,
+  GiB: 1024**3,
+  TiB: 1024**4
+};
+const all = { ...si, ...iec };
+
+function konveti() {
+  const val = parseFloat(document.getElementById("valeur").value);
+  const from = document.getElementById("from").value;
+  const to = document.getElementById("to").value;
+
+  if (isNaN(val)) {
+    document.getElementById("rezilta").innerHTML = "Tanpri antre yon nonb valab.";
+    document.getElementById("eksplikasyon").innerHTML = "";
+    return;
+  }
+
+  if (from === to) {
+    document.getElementById("rezilta").innerHTML = `Rezilta: ${val} ${to}`;
+    document.getElementById("eksplikasyon").innerHTML = `Ou chwazi menm inite a: <strong>${from}</strong>. Pa gen okenn konvèsyon nesesè.`;
+    return;
+  }
+
+  const valInByte = val * all[from];
+  const result = valInByte / all[to];
+
+  document.getElementById("rezilta").innerHTML = `<strong>Rezilta:</strong> ${result.toFixed(6)} ${to}`;
+  document.getElementById("eksplikasyon").innerHTML = `
+    <strong>Fòmil matematik:</strong><br>
+    1. Konvèti ${val} ${from} an bytes: ${val} × ${all[from]} = ${valInByte} bytes<br>
+    2. Konvèti bytes an ${to}: ${valInByte} ÷ ${all[to]} = ${result.toFixed(6)} ${to}`;
+}
+</script>

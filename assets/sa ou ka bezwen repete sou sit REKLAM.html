@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>REKLAM SA MWN KA BEZWEN REPETE SOU SIT</title>
+</head>
+
+<body>
+  
+ <h1 style="color:red; font-size: 2rem;" >
+  <!--Tab to edit-->REKLAM SA MWN KA BEZWEN REPETE SOU SIT LA
+ </h1 >
+ 
+   <p style="color: red; font-size: 1.5rem; animation: fadeIn 10s ;">
+   <!--Tab to edit-->Si ou apresye sa ou jwenn sou sit sa a, nou envite w klike sou bouton anba a pou sipòte pwojè a. Pataje li ak yon moun ki gen enterè nan pwogramasyon pou ede plis moun dekouvri sa nou ofri e ankouraje kwasans inisyativ sa a.
+
+
+
+
+  </p>
+<a href="/donasyon.html" style="text-decoration: none;">
+ <button style="padding: 7px 5px; background: #f1f1f1; color: seagreen; font-weight: bold;" class="">
+  Mwen bezwen ankourajman! fè donasyon♥️ pou travay la ka rive pi lwen
+ </button>
+</a>
+
+
+
+
+
+ si ou vle mete remak pou paj egzèse a 
+  <p class="warning">Remak: ou ka chwazi ou byen kòman kote ou vle, men li pi janti si ou komanse pa kòmansman yo </p>
+ 
+ 
+</body>
+
+</h
+
+
+    .adkod-logo {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 48px;
+      font-weight: bold;
+      color: #0099cc;
+    }
+
+    .adkod-logo span {
+      color: #66cc33;
+    }
+
+    .adkod-box {
+      border: 3px solid #66cc33;
+      padding: 20px 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(0, 255, 128, 0.2);
+      background-color: #101030;
+      transition: transform 0.3s ease;
+    }
+
+    .adkod-box:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="adkod-box">
+    <div class="adkod-logo">AD-<span>kòd</span></div>
+  </div>
+  
+  
+  <br /><br /><br />
+                <!--Tab to edit-->  <button id="btnPataje" style="background: none; border: none; cursor: pointer;"><!--Bouton pataj--><!--Bouton pataj-->
+  <style>   .icon_pataje {
+  stroke: #4267B2;  
+  transition: transform 0.2s, stroke 0.2s;
+}
+.icon_pataje:hover {
+  transform: scale(1.1);
+  stroke: #00acee; 
+}
+</style>
+pataje kontni sa
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="48" height="48"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="icon_pataje"
+  role="img"
+  aria-label="Pataje"
+>
+  <circle cx="18" cy="5" r="3"></circle>
+  <circle cx="6" cy="12" r="3"></circle>
+  <circle cx="18" cy="19" r="3"></circle>
+  <line x1="8.7" y1="10.4" x2="15.3" y2="6.6"></line>
+  <line x1="8.7" y1="13.6" x2="15.3" y2="17.4"></line>
+</svg>
+  </button>
+
+
+  <!--Bouton pataj-->
+<script>
+//<!--Bouton pataj--><!--Bouton pataj--><!--Bouton pataj--><!--Bouton pataj--><!--Bouton pataj-->// 
+  const btnPataje = document.getElementById("btnPataje");
+
+  btnPataje.addEventListener("click", async () => {
+    const shareData = {
+      title: document.title,
+      text: "Gade paj sa! Sa fè lontan ou enterese pou aprann yon bagay eben men li zanmim, ou pap regrèt aprann PWOGRAMASYON, li ap baw pouvwa pou ou travay pou nenpòt antrepriz lotbò san ou pa kite peyi a e touche jiska 10 000$ mansyèl.",
+      url: window.location.href
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+        alert("Paj la pataje ak siksè!");
+      } catch (err) {
+        console.error("Erè pandan pataj la:", err);
+      }
+    } else {
+      alert("Fonksyon pataje sa a pa sipòte sou aparèy ou a.\nKopye lyen sa épi patajel ak yon moun:\n" + window.location.href);
+    }
+  });
+</script>
+</body>
+</html>

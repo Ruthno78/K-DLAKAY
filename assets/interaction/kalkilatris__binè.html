@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ht">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+ 
+  <title>Kalkilatris Binè & Operatè</title>
+  <style>
+  
+  div {
+    max-width: 800px;
+    margin: 30px auto;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    text-align: center;
+    color: #0099cc;
+    margin-bottom: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+  }
+
+  thead {
+    background-color: #0099cc;
+    color: white;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  tbody tr:hover {
+    background-color: #e6f7ff;
+  }
+
+  @media (max-width: 600px) {
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+
+    thead {
+      display: none;
+    }
+
+    tr {
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      background-color: white;
+    }
+
+    td {
+      padding: 10px;
+      position: relative;
+    }
+
+    td::before {
+      content: attr(data-label);
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+      color: #0099cc;
+    }
+  }
+
+    .kalkilatris {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #e3f2fd;
+      padding: 20px 25px;
+      border-radius: 12px;
+      max-width: 520px;
+      margin: 30px auto;
+      box-shadow: 0 6px 20px rgba(33, 150, 243, 0.3);
+    }
+
+    .kalkilatris input,
+    .kalkilatris select,
+    .kalkilatris button {
+      padding: 10px 12px;
+      margin: 6px 5px;
+      border-radius: 6px;
+      border: 2px solid #42a5f5;
+      font-size: 15px;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+    }
+
+    .kalkilatris input:focus,
+    .kalkilatris select:focus {
+      border-color: #1e88e5;
+      outline: none;
+      box-shadow: 0 0 10px rgba(30, 136, 229, 0.5);
+    }
+
+    .kalkilatris-op-ligne,
+    .kalkilatris-btn-row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .kalkilatris-op-ligne input,
+    .kalkilatris-op-ligne select {
+      flex: 1;
+      min-width: 30%;
+    }
+
+    .kalkilatris-btn-row button {
+      flex: 1;
+      background-color: #1976d2;
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      transition: background-color 0.25s ease;
+      box-shadow: 0 4px 8px rgba(25, 118, 210, 0.4);
+    }
+
+    .kalkilatris-btn-row button:hover {
+      background-color: #0d47a1;
+    }
+
+    .kalkilatris-rezilta {
+      background: #ffffff;
+      border-left: 5px solid #2196f3;
+      padding: 14px 15px;
+      margin: 12px 0;
+      font-weight: 600;
+      color: #0d47a1;
+      border-radius: 6px;
+      box-shadow: 1px 1px 8px rgba(33, 150, 243, 0.3);
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="kalkilatris">
+    <h2>Konvètisè Binè ak Operatè</h2>
+
+    <p id="rezilta" class="kalkilatris-rezilta"></p>
+
+    <h3>Konvèsyon Binè/Desimal</h3>
+    <input type="text" id="bin" placeholder="Antre Binè (egzanp: 1010)" />
+    <input type="number" id="dec" placeholder="Antre Desimal (egzanp: 10)" />
+
+    <div class="kalkilatris-btn-row">
+      <button onclick="konvDecimal()">Binè ➜ Desimal</button>
+      <button onclick="konvBin()">Desimal ➜ Binè</button>
+    </div>
+
+    <p id="rezOp" class="kalkilatris-rezilta"></p>
+
+    <h3>Operasyon Binè</h3>
+    <div class="kalkilatris-op-ligne">
+      <input type="number" id="a" placeholder="Valè A" />
+      <select id="op">
+        <option value="&">& AND</option>
+        <option value="|">| OR</option>
+        <option value="^">^ XOR</option>
+        <option value="~">~ NOT A</option>
+        <option value="<<"><< A chif gòch B</option>
+        <option value=">>">>> A chif dwat B</option>
+      </select>
+      <input type="number" id="b" placeholder="Valè B" />
+    </div>
+<h6>
+  <!--Tab to edit-->©2025 RTHN7877
+</h6>
+    <div class="kalkilatris-btn-row">
+      <button onclick="egzekite()">Egzekite</button>
+      <button onclick="reini()">Réinit.</button>
+    </div>
+  </div>
+  
+<div>
+  <h2>Tablo Operatè Bitwis nan Pwogramasyon</h2>
+  <table border="1" cellpadding="10" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Operatè</th>
+        <th>Non</th>
+        <th>Deskripsyon</th>
+        <th>Egzanp</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>&amp;</td>
+        <td>AND</td>
+        <td>Konpare chak bit. Retounen 1 si **tou le de bits** yo se 1</td>
+        <td>5 &amp; 3 = 1<br>(0101 & 0011 = 0001)</td>
+      </tr>
+      <tr>
+        <td>|</td>
+        <td>OR</td>
+        <td>Konpare chak bit. Retounen 1 si **omwen youn** se 1</td>
+        <td>5 | 3 = 7<br>(0101 | 0011 = 0111)</td>
+      </tr>
+      <tr>
+        <td>^</td>
+        <td>XOR</td>
+        <td>Konpare chak bit. Retounen 1 si **yon sèl** nan yo se 1</td>
+        <td>5 ^ 3 = 6<br>(0101 ^ 0011 = 0110)</td>
+      </tr>
+      <tr>
+        <td>~</td>
+        <td>NOT</td>
+        <td>Envèse tout bits yo (complément à 1)</td>
+        <td>~5 = -6<br>(~0101 = 1010)</td>
+      </tr>
+      <tr>
+        <td>&lt;&lt;</td>
+        <td>Shift Left</td>
+        <td>Deplase bits yo agoch (multiplye pa 2)</td>
+        <td>5 &lt;&lt; 1 = 10<br>(0101 &lt;&lt; 1 = 1010)</td>
+      </tr>
+      <tr>
+        <td>&gt;&gt;</td>
+        <td>Shift Right</td>
+        <td>Deplase bits yo adwat (divize pa 2)</td>
+        <td>5 &gt;&gt; 1 = 2<br>(0101 &gt;&gt; 1 = 0010)</td>
+      </tr>
+    </tbody>
+  </table>
+  
+</div>
+<h5>
+  <!--Tab to edit-->©2025 RTHN7877
+</h5>
+  <script>
+    function konvDecimal() {
+      const b = document.getElementById("bin").value;
+      const rez = document.getElementById("rezilta");
+
+      if (!/^[01]+$/.test(b)) {
+        rez.innerText = "ERÈ: Tanpri antre sèlman 0 ak 1 (egzanp: 1011)";
+        return;
+      }
+
+      const dec = parseInt(b, 2);
+      rez.innerHTML = `Binè <strong>${b}</strong> egal ak desimal <strong>${dec}</strong>.<br>
+        Sa vle di: ${b.split("").reverse().map((bit, i) => `${bit}×2^${i}`).join(" + ")}`;
+    }
+
+    function konvBin() {
+      const d = document.getElementById("dec").value;
+      const rez = document.getElementById("rezilta");
+
+      if (d === "") {
+        rez.innerText = "Tanpri antre yon nimewo desimal.";
+        return;
+      }
+
+      const bin = parseInt(d).toString(2);
+      rez.innerHTML = `Desimal <strong>${d}</strong> egal ak binè <strong>${bin}</strong>.<br>
+        Nou itilize divizyon pa 2 jiskaske nou jwenn 0, rès yo bay bit yo.`;
+    }
+
+    function egzekite() {
+      let a = parseInt(document.getElementById("a").value);
+      let b = parseInt(document.getElementById("b").value);
+      let op = document.getElementById("op").value;
+      let rez = document.getElementById("rezOp");
+
+      if (isNaN(a)) {
+        rez.innerText = "Tanpri antre valè A.";
+        return;
+      }
+
+      let r = 0, t = "";
+
+      switch (op) {
+        case "&":
+          if (isNaN(b)) {
+            rez.innerText = "Tanpri antre valè B pou AND.";
+            return;
+          }
+          r = a & b;
+          t = `${a} & ${b} = ${r}<br><small>AND: chak bit dwe 1 pou li rete 1</small>`;
+          break;
+        case "|":
+          if (isNaN(b)) {
+            rez.innerText = "Tanpri antre valè B pou OR.";
+            return;
+          }
+          r = a | b;
+          t = `${a} | ${b} = ${r}<br><small>OR: si youn nan bit yo se 1, li bay 1</small>`;
+          break;
+        case "^":
+          if (isNaN(b)) {
+            rez.innerText = "Tanpri antre valè B pou XOR.";
+            return;
+          }
+          r = a ^ b;
+          t = `${a} ^ ${b} = ${r}<br><small>XOR: sèlman lè yo diferan li bay 1</small>`;
+          break;
+        case "~":
+          r = ~a;
+          t = `~${a} = ${r}<br><small>NOT: chanje 0 an 1 ak 1 an 0 (konpleman de 2)</small>`;
+          break;
+        case "<<":
+          if (isNaN(b)) {
+            rez.innerText = "Tanpri antre valè B pou chif gòch.";
+            return;
+          }
+          r = a << b;
+          t = `${a} << ${b} = ${r}<br><small>Chif Gòch: ajoute 0 sou bò dwat, tankou miltipliye pa 2</small>`;
+          break;
+        case ">>":
+          if (isNaN(b)) {
+            rez.innerText = "Tanpri antre valè B pou chif dwat.";
+            return;
+          }
+          r = a >> b;
+          t = `${a} >> ${b} = ${r}<br><small>Chif Dwat: retire bit sou bò dwat, tankou divize pa 2</small>`;
+          break;
+        default:
+          t = "Operatè pa rekonèt.";
+      }
+
+      rez.innerHTML = `<strong>Rezilta:</strong> ${t}`;
+    }
+
+    function reini() {
+      ["bin", "dec", "a", "b"].forEach(id => document.getElementById(id).value = "");
+      document.getElementById("op").value = "&";
+      document.getElementById("rezilta").innerText = "";
+      document.getElementById("rezOp").innerText = "";
+    }
+  </script>
+</body>
+
+</html>

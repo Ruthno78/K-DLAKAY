@@ -1,0 +1,1280 @@
+  
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+
+
+<style>
+
+.mainFrame {
+  width: 100%;
+  height: 100% ; /* Ajiste selon wotè footer la */
+  border: none;
+  display: block;
+  margin:none ;
+  
+  position:absolute ;
+  
+}
+
+
+
+
+  .side-menu {
+  opacity: 92%;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 70%;
+  height: 100%;
+  background: #FFFFFF;
+  padding-top: 70px;
+  transition: left 0.4s ease;
+  z-index: 1000;
+  overflow-y: auto;
+  ; 
+}
+
+.side-menu.active {
+  left: 0px;
+}
+#overlay {
+  top: 0;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  
+  backdrop-filter: blur(3px);
+  
+  -webkit-backdrop-filter: blur(5px);
+  /* Sipò pou Safari */
+  display: none;
+  z-index: 800;
+}
+#overlay.active {
+  display: block;
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 95%;
+  padding: 31px 20px;
+  
+  background-color: #fff;
+  border-bottom: 1px solid #EE6C71;
+
+  display: flex;
+  
+  justify-content: space-between;
+  z-index: 999;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+
+  
+  height: 2px;
+
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  opacity: 100%;
+  width: 92px;
+  weight: auto;
+  margin-top: 10px;
+  cursor: pointer;
+}
+  /* Lyen meni nan mòd fènwa */
+.darktheme nav a {
+  color: #d3a6ff;
+}
+
+/* Lyen sou hover nan dark theme */
+.darktheme nav a:hover {
+  color: #ff99cc; /* Wouj pal oswa roz */
+}
+/* Bouton meni twa ba */
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  position: fixed;
+  top: 20px;
+  right: 20px; 
+  z-index: 1001;
+}
+.dark-theme .bar { background-color: #FFFFFF;}
+
+/* Chak ba meni an */
+.bar {
+  height: 4px;
+  background-color: #FF1C1C; /* Wouj fonse */
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Navigasyon prensipal */
+nav {
+  background-color: #0099cc; 
+  color: white;
+  padding: 15px 15px;
+  position: fixed;
+  top: 60px;
+  right: 10px;
+  display: none;
+  flex-direction: column;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+/* Lyen navigasyon */
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 0;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  text-decoration: underline;
+  color: #EB8457; 
+}
+nav a:focus {
+  text-decoration: ;
+  color: #E9D9FF;
+}
+nav a:active {
+  text-decoration: none;
+  color: #651F00;
+}
+
+/* Animasyon lè bouton an aktive */
+.active .bar:nth-child(1) {
+  transform: rotate(45deg) translateY(10px);
+}
+
+.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translateY(-10px);
+}
+
+/* Fè meni an parèt */
+.show-nav {
+  display: flex;
+}
+
+/* Responsivite pou ti ekran */
+@media (max-width: 600px) {
+  nav {
+    right: 10px;
+    top: 60px;
+    width: 80%;
+    padding: 20px;
+  }
+
+  .menu-toggle {
+    right: 15px;
+  }
+
+  nav a {
+    font-size: 18px;
+    padding: 12px 0;
+  }
+}
+
+
+
+
+  /* ::::::;;;;;;;;;;;;;;;;;;;;;;;;;;:::::*/
+  /*          style motè rechèch         */ 
+  /* ::::::;;;;;;;;;;;;;;;;;;;;;;;;;;:::::*/
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+body {
+font-family: 'Segoe UI', sans-serif;
+padding-top: 80px; /* Espas pou motè rechèch la ki kole anlè */
+background: #f9f9f9;
+overflow-x: hidden;
+}
+
+/* --- Motè rechèch k ap kole an  lè ekran an --- */
+.motè-rechèch {
+position: sticky;
+top: 0;
+z-index: 999;
+background-color: #f9f9f9;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 12px 1rem;
+gap: 10px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Input Rechèch */
+.motè-rechèch input {
+flex: 3;
+padding: 10px 14px;
+font-size: 14px;
+border: 1px solid #0031FF;
+border-radius: 10px;
+outline: none;
+transition: border 0.3s;
+}
+
+/* --- Responsivite sou ekran ≥ 769px --- */
+@media (min-width: 769px) {
+  /* --- Rezilta yo --- */
+  .no-result {
+text-align: center;
+padding: 20px;
+color: #888;
+}
+
+.no-result-content p {
+font-size: 15px;
+font-weight: 500;
+}
+.suggestion-list {
+  position: absolute;
+  z-index: 1000;
+  background: white;
+  border: 0.3px solid #FFDFDF;
+  list-style: none;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  width: 100%;
+  margin-top: 2px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.suggestion-list li {
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.suggestion-list li:hover {
+  background: #87AFFF;
+color: #FFFFFF;
+}
+.suggestion-list li:focus {
+  background: #FF8787;
+  color: #FFFFFF;
+}
+.suggestion-list li:active {
+  background: #8794FF;
+  color: #FFFFFF;
+}
+.search-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px 10px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  color: #FF0000;
+}
+.container {
+  max-width: 1100px;
+  
+  
+}
+#resultList {
+list-style: none;
+padding: 0;
+margin: 1rem;
+max-width: 95%;
+}
+
+.result-item {
+display: flex;
+align-items: center;
+background: #FFFFFF;
+border-radius: 10px;
+padding: 12px;
+box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+margin-bottom: 15px;
+transition: background 0.3s;
+word-break: break-word;
+}
+
+.result-item:hover {
+background: #87AFFF;
+color: #FFFFFF;
+cursor: pointer;
+}
+
+.result-item:active {
+background: #DE8585;
+color: #FFFFFF;
+cursor: pointer;
+}
+
+.result-item img {
+width: 50px;
+height: 50px;
+border-radius: 6px;
+object-fit: cover;
+margin-right: 14px;
+flex-shrink: 0;
+}
+
+.text {
+flex: 1;
+min-width: 0;
+}
+
+.title {
+font-weight: 600;
+font-size: 15px;
+color: #222;
+margin-bottom: 4px;
+}
+
+  .motè-rechèch {
+    max-width: 1000px;
+    margin: auto;
+    gap: 20px;
+    padding: 16px 2rem;
+  }
+  
+  .motè-rechèch input {
+    font-size: 16px;
+    padding: 12px 18px;
+  }
+  
+  .search-button {
+    padding: 12px 14px;
+  }
+  
+  #resultList {
+    max-width: 900px;
+    margin: 2rem auto;
+  }
+  
+  .result-item {
+    padding: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .result-item img {
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+  }
+  
+  .title {
+    font-size: 18px;
+  }
+  
+  .desc {
+    font-size: 15px;
+  }
+}
+/* --- Responsivite sou mobil: 75% pou input, 25% pou select --- */
+@media (max-width: 768px) {
+.motè-rechèch {
+flex-direction: row;
+padding: 20px;
+gap: 8px;
+}
+
+.motè-rechèch input {
+flex: 3;
+font-size: 13px;
+}
+
+
+
+
+/* --- Rezilta yo --- */
+#resultList {
+list-style: none;
+padding: 0;
+margin: 1rem;
+max-width: 95%;
+}
+
+.result-item {
+display: flex;
+align-items: center;
+background: #FFFFFF;
+border-radius: 10px;
+padding: 12px;
+box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+margin-bottom: 15px;
+transition: background 0.3s;
+word-break: break-word;
+}
+
+.result-item:hover {
+background: #87AFFF;
+color: #FFFFFF;
+cursor: pointer;
+}
+
+.result-item:active {
+background: #DE8585;
+color: #FFFFFF;
+cursor: pointer;
+}
+
+.result-item img {
+width: 50px;
+height: 50px;
+border-radius: 6px;
+object-fit: cover;
+margin-right: 14px;
+flex-shrink: 0;
+}
+
+.text {
+flex: 1;
+min-width: 0;
+}
+
+.title {
+font-weight: 600;
+font-size: 15px;
+color: #222;
+margin-bottom: 4px;
+}
+
+.desc {
+font-size: 13.5px;
+color: #666;
+line-height: 1.4;
+white-space: normal;
+}
+
+.no-result {
+text-align: center;
+padding: 20px;
+color: #888;
+}
+
+.no-result-content p {
+font-size: 15px;
+font-weight: 500;
+}
+.suggestion-list {
+  position: absolute;
+  z-index: 1000;
+  background: white;
+  border: 0.3px solid #FFDFDF;
+  list-style: none;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  width: 100%;
+  margin-top: 2px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.suggestion-list li {
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.suggestion-list li:hover {
+  background: #87AFFF;
+color: #FFFFFF;
+}
+.suggestion-list li:focus {
+  background: #FF8787;
+  color: #FFFFFF;
+}
+.suggestion-list li:active {
+  background: #8794FF;
+  color: #FFFFFF;
+}
+.search-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px 10px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  color: #FF0000;
+}
+.container {
+  max-width: 1100px;
+  
+  
+}
+</style>
+ </head>
+ <body>
+    <div class="header">
+    <div class="header-left">
+      <img src="/assets/logo_header.png" alt="Logo" class="logo" onclick="toggleMenu()">
+
+    </div>
+    
+  </div>
+          <!-- Bouton twa ba -->
+        <div class="menu-toggle" id="menu-toggle">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <!-- Navigasyon -->
+        <nav id="nav"><button onclick="hideIframe()" style="background: darkgray; margin-left: 30px; color: red;display: block;" >Fèmen kontni</button> 
+          <a href="/index.html">Akèy</a>
+          <a href="/egzese.html">Egzèse</a>
+          <a href="/resous.html">Libreri</a>
+          <a href="/donasyon.html">kontakte nou</a>
+          
+        </nav>
+        </div>
+        </div>
+
+
+
+  <iframe 
+  
+    class="mainFrame" id="mainFrame" allowfullscreen
+    style="display:none;" 
+  ></iframe>
+
+
+
+
+          <div class="side-menu" id="sideMenu">
+
+<body>  
+
+<div class="container">
+  
+
+<div class="motè-rechèch">
+  <input type="text" id="searchInput" placeholder="Chèche yon sijè..."><button onclick="handleSearch()" type="button" class="search-button" aria-label="Rechèch">
+  <svg xmlns="http://www.w3.org/2000/svg" style="border-radius: 10%; vertical-align: middle;" width="33" height="30" fill="#555" viewBox="0 0 24 24">
+    <path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.21 5.01 12.2 2 8.6 2S2 5.01 2 8.6s3.01 6.6 6.6 6.6c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6.9 0C6.01 14 4 11.99 4 9.6S6.01 5.2 8.6 5.2 13.2 7.21 13.2 9.6 11.19 14 8.6 14z" />
+  </svg>
+</button>
+<select id="categoryFilter" style="
+  margin-top: 50px;
+  position: fixed;
+  z-index: 999;
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: #333;
+  padding: 3px 8px;
+  outline: none;
+  
+  cursor: pointer;
+  
+  text-align: left;
+">
+  <option value="">Tout Kategori</option>
+  <option value="HTML">HTML</option>
+  <option value="CSS">CSS</option>
+  <option value="JavaScript">JavaScript</option>
+
+</select>
+
+</div>
+
+<ul id="suggestionList" class="suggestion-list"></ul>
+</div>
+
+<ul id="resultList">
+
+
+    
+  </ul>
+<ul id="lessonData">
+<!-- 1) Fonksyònman Sit Entènèt -->
+<li
+  data-title="Fonksyònman Sit Entènèt"
+  data-description="Dekouvri kijan sit entènèt fonksyone, depi w tape yon adrès jiska li parèt sou ekran an."
+  data-category=" "
+  data-img=""
+  target=""
+  data-link="/paj/Web/kou_web.html#fonctionnement-sites-web"
+  data-tag="kijan sit entènèt fonksyone, kòman entènèt mache, ki jan navigatè ak sèvè kominike, sa ki fonksyònman sit web, kijan HTML ak CSS travay"
+  data-author="Ruthno"
+  data-date="2025-06-07"
+  data-level="Débutan"
+  data-type="Atik"
+></li>
+
+<!-- 2) Istwa Entènèt -->
+<li
+  data-title="Istwa Entènèt la (1967 – 1983)"
+  data-description="Kòman ARPANET ak TCP/IP te mete baz k ap defini entènèt la jodi a."
+  data-category=" "
+  data-img=""
+  target=""
+  data-link="/paj/Web/kou_web.html#1-istwa-entènèt"
+  data-tag="kijan ARPANET te kòmanse, kòman TCP/IP devlope, ki jan entènèt fèt, sa ki istwa entènèt, kalite rezo, evolisyon internet"
+  data-author="Ruthno"
+  data-date="2025-06-07"
+  data-level="Débutan"
+  data-type="Atik"
+></li>
+
+<!-- 3) Estatistik Itilizasyon Entènèt -->
+<li
+  data-title="Estatistik sou Itilizasyon Entènèt"
+  data-description="Kijan aksè entènèt varye atravè peyi, sitou Ayiti, ak estatistik mondyal."
+  data-category=" "
+  data-img=""
+  target=""
+  data-link="/paj/Web/kou_web.html#2-estatistik-itilizasyon"
+  data-tag="kijan entènèt itilize, kòman moun itilize entènèt, ki jan aksè entènèt varye, sa ki estatistik entènèt, done itilizasyon, konparezon peyi"
+  data-author="Ruthno"
+  data-date="2025-06-07"
+  data-level="Débutan"
+  data-type="Atik"
+></li>
+
+<!-- 4) Prensip Rezo -->
+<li
+  data-title="Prensip Rezo a"
+  data-description="Dekouvri kijan rezo òdinatè kominiké ant yo, ak prensip Client‑Server."
+  data-category=" "
+  data-img=""
+  target=""
+  data-link="/paj/Web/kou_web.html#3-prensip-rezo"
+  data-tag="kijan rezo òdinatè klarifye, kòman òdinatè kominike, ki jan rezo fonksyone, sa ki modèl client-server, rezo informatique"
+  data-author="Ruthno"
+  data-date="2025-06-07"
+  data-level="Débutan"
+  data-type="Atik"
+></li>
+
+<!-- 5) Modèl TCP/IP -->
+<li
+  data-title="Modèl TCP/IP"
+  data-description="Kijan 4 nivo TCP/IP lojisyèl mache: Aplikasyon, Transpò, Rezo, Aksè."
+  data-category=" "
+  data-img=""
+  target=""
+  data-link="/paj/Web/kou_web.html#4-model-tcpip"
+  data-tag="kijan modèl TCP/IP fonksyone, kòman nivo TCP/IP travay, ki jan protokòl kominike, sa ki modèl rezo TCP/IP, osi rezo"
+  data-author="Ruthno"
+  data-date="2025-06-07"
+  data-level="Débutan"
+  data-type="Atik"
+></li>
+
+<!-- 6) Kouch Aplikasyon -->
+<li
+  data-title="Kouch Aplikasyon & Prensip Web la"
+  data-description="Kijan pwotokòl tankou HTTP, FTP, DNS, SSH, imèl mache kòm pati sistèm entènèt la."
+  data-category=" "
+  data-img=""
+  target=""
+  data-link="/paj/Web/kou_web.html#5-kouch-aplikasyon"
+  data-tag="kijan HTTP mache, kòman DNS tradui non, ki jan FTP transfere fichye, sa ki kouch aplikasyon, itilizasyon pwotokòl web"
+  data-author="Ruthno"
+  data-date="2025-06-07"
+  data-level="Débutan"
+  data-type="Atik"
+></li>
+
+<!-- 7) HTTP ak Trame li -->
+<li
+  data-title="HTTP ak Trame li"
+  data-description="Aprann ki jan demann HTTP (GET/POST) estriktire, ansanm ak istwa URL."
+  data-category=" "
+  data-img=""
+  target=""
+  data-link="/paj/Web/kou_web.html#6-http-trame"
+  data-tag="kijan HTTP fonksyone, kòman demann GET/POST fèt, ki jan URL defini, sa ki trame HTTP, estrikti demann web"
+  data-author="Ruthno"
+  data-date="2025-06-07"
+  data-level="Débutan"
+  data-type="Atik"
+></li>
+
+<!-- 8) Kijan Web la Fonksyone -->
+<li
+  data-title="Kijan Web la Fonksyone"
+  data-description="Kòman kliyan ak sèvè kominike, sit statik vs dinamik, wòl JavaScript."
+  data-category=" "
+  data-img=""
+  target=""
+  data-link="/paj/Web/kou_web.html#8-fonksyone-web"
+  data-tag="kijan web mache, kòman sit estatik diferan de dinamik, ki jan JS entèagi, sa ki achitekti client-server"
+  data-author="Ruthno"
+  data-date="2025-06-07"
+  data-level="Débutan"
+  data-type="Atik"
+></li>
+
+<!-- 9) Langaj Web yo -->
+<li
+  data-title="Langaj Web yo"
+  data-description="Ki jan HTML, CSS, JavaScript sèvi pou estrikti, stil, ak entèraksyon sou paj entènèt."
+  data-category=" "
+  data-img=""
+  target=""
+  data-link="/paj/Web/kou_web.html#langaj-web_yo"
+  data-tag="kijan HTML travay, kòman CSS estilize, ki jan JavaScript entèaji, langaj web, estrikti stil script web"
+  data-author="Ruthno"
+  data-date="2025-06-07"
+  data-level="Débutan"
+  data-type="Atik"
+></li>
+
+<!-- 10) HTML & CSS Fonksyonman -->
+<li
+  data-title="HTML ak CSS : Bwat Zouti Web la"
+  data-description="Ki jan HTML se estrikti ak CSS se stil, ansanm ak egzanp difèrans."
+  data-category=" "
+  data-img=""
+  target=""
+  data-link="/paj/Web/kou_web.html#html-css-fonksyonman-sitweb"
+  data-tag="kijan HTML bay estrikti, kòman CSS dekore, ki jan yo mache ansanm, sa ki egzanp HTML CSS, diferans san ak avèk CSS"
+  data-author="Ruthno"
+  data-date="2025-06-07"
+  data-level="Débutan"
+  data-type="Atik"
+></li>
+
+<!-- 11) Vèsyon HTML  2025 -->
+<li
+  data-title="Vèsyon HTML pou 2025"
+  data-description="Ki jan HTML te evolye jiska estanda vivan pou 2025."
+  data-category="HTML" 
+  data-img=""
+  target=""
+  data-link="/paj/Web/kou_web.html#versyon-html-css-2025"
+  data-tag="kijan HTML evolye, kòman CSS mete ajou, ki jan estanda web chanje, vèsyon HTML CSS, sa ki CSS Snapshot 2025"
+  data-author="Ruthno"
+  data-date="2025-06-07"
+  data-level="Débutan"
+  data-type="Atik"
+></li>
+<!-- 11) Vèsyon CSS 2025 -->
+<li
+  data-title="Vèsyon CSS pou 2025"
+  data-description="Ki jan HTML ak CSS te evolye jiska estanda vivan pou 2025."
+  data-category="CSS"
+  data-img=""
+  target=""
+  data-link="/paj/Web/kou_web.html#versyon-css-2025"
+  data-tag="kijan HTML evolye, kòman CSS mete ajou, ki jan estanda web chanje, vèsyon HTML CSS, sa ki CSS Snapshot 2025"
+  data-author="Ruthno"
+  data-date="2025-06-07"
+  data-level="Débutan"
+  data-type="Atik"
+></li>
+
+<!-- 12) Ekri yon Sit -->
+<li
+  data-title="Ekri yon Sit Entènèt"
+  data-description="Kijan pou ekri yon sit ak plan, HTML, CSS, JS, hosting ak etaj planifye."
+  data-category=" "
+  data-img=""
+  target=""
+  data-link="/paj/Web/kou_web.html#9-ekri-sit"
+  data-tag="kijan ekri sit, kòman planifye yon sit, ki jan hosting fèt, sa ki planifikasyon ekri yon sit, etap devlopman web"
+  data-author="Ruthno"
+  data-date="2025-06-07"
+  data-level="Débutan"
+  data-type="Atik"
+></li>
+Planifikasyon pou ekri yon sit
+
+  <li class="search-item"
+    data-title="Planifikasyon pou ekri yon sit"
+    data-description="Gid etap pa etap pou planifye kontni, ergonomi, ak fonksyonalite yon sit."
+    data-category=" "
+    data-img=""
+     
+    data-link="/paj/Web/kou_web.html#planifikasyon-ekri_yon_sit"
+    data-tag="planifikasyon-sit, konsepsyon, etap-devlopman"
+    data-author="Ruthno"
+    data-date="2025-06-07"
+    data-level="Débutan"
+    data-type="Atik">
+  </li>
+
+  <li class="search-item"
+    data-title="Kisa Front-end ak Back-end ye?"
+    data-description="Eksplikasyon sou diferans ki genyen ant devlopman Front-end ak Back-end."
+    data-category=" "
+    data-img=""
+     
+    data-link="/paj/Web/kou_web.html#ki-sa-front-back-end-ye"
+    data-tag="frontend, backend, fonksyon-sit"
+    data-author="Ruthno"
+    data-date="2025-06-07"
+    data-level="Débutan"
+    data-type="Atik">
+  </li>
+
+  <li class="search-item"
+    data-title="Devlopman web se pa sèlman HTML"
+    data-description="Dekouvri lòt aspè devlopman web tankou CSS, JS, ak bon pratik."
+    data-category=" "
+    data-img=""
+     
+    data-link="/paj/Web/kou_web.html#devlopman-web_sepa_selman_html"
+    data-tag="html, css, javascript, devlopman"
+    data-author="Ruthno"
+    data-date="2025-06-07"
+    data-level="Débutan"
+    data-type="Atik">
+  </li>
+
+  <li class="search-item"
+    data-title="Kourè: HTML, CSS, Navigatè ak Editè"
+    data-description="Aprann kijan editè tèks, navigatè, ak zouti mobil ede w kòd fasilman."
+    data-category=" "
+    data-img=""
+     
+    data-link="/paj/Web/kou_web.html#kourè-html-css-navigatè-editè"
+    data-tag="kourè, editè, zouti-devlopman"
+    data-author="Ruthno"
+    data-date="2025-06-07"
+    data-level="Débutan"
+    data-type="Atik">
+  </li>
+
+  <li class="search-item"
+    data-title="Kisa pou m chwazi lè map ekri HTML?"
+    data-description="Konsèy sou estrikti tag HTML ak bon jan fason pou òganize paj ou yo."
+    data-category=" "
+    data-img=""
+     
+    data-link="/paj/Web/kou_web.html#kisa-poum-chwazi-html"
+    data-tag="html, tag, estrikti"
+    data-author="Ruthno"
+    data-date="2025-06-07"
+    data-level="Débutan"
+    data-type="Atik">
+  </li>
+
+  <li class="search-item"
+    data-title="Lòt zouti pou fè sit entènèt"
+    data-description="Lis zouti itil pou konsepsyon ak devlopman sit web, sou PC ak telefòn."
+    data-category=" "
+    data-img=""
+     
+    data-link="/paj/Web/kou_web.html#lot-zouti-pou-fè-sit"
+    data-tag="zouti, web, mobil, PC"
+    data-author="Ruthno"
+    data-date="2025-06-07"
+    data-level="Débutan"
+    data-type="Atik">
+  </li>
+
+<!-- ZOUTI 1 - 8: Vèsyon Pwofesyonèl ak data-* konplè -->
+<li class="search-item"
+  data-title="Baz Done (Database)"
+  data-description="Pou estoke enfòmasyon itilizatè yo. Egzanp: MySQL, PostgreSQL, MongoDB, Firebase."
+  data-category="backend"
+  data-img=""
+   
+  data-link="/paj/Web/kou_web.html#zouti1"
+  data-tag="baz done, database, firebase, mysql, postgresql, mongodb"
+  data-author="Ruthno"
+  data-date="2025-06-07"
+  data-level="Débutan"
+  data-type="Zouti">
+</li>
+
+<li class="search-item"
+  data-title="Back-End Language"
+  data-description="Pou trete done epi fè lojik fonksyonèl la. Egzanp: Node.js, PHP, Python (Django), Ruby, Java."
+  data-category="backend"
+  data-img=""
+   
+  data-link="/paj/Web/kou_web.html#zouti2"
+  data-tag="back-end, node.js, php, python, django, java, ruby"
+  data-author="Ruthno"
+  data-date="2025-06-07"
+  data-level="Débutan"
+  data-type="Zouti">
+</li>
+
+<li class="search-item"
+  data-title="Framework Front-End"
+  data-description="Pou òganize kòd ou pi byen epi devlope entèfas. Egzanp: React, Vue, Angular, Svelte."
+  data-category="frontend"
+  data-img=""
+   
+  data-link="/paj/Web/kou_web.html#zouti3"
+  data-tag="front-end, react, vue, angular, svelte, framework"
+  data-author="Ruthno"
+  data-date="2025-06-07"
+  data-level="Débutan"
+  data-type="Zouti">
+</li>
+
+<li class="search-item"
+  data-title="API (Entèfas Pwogramasyon)"
+  data-description="Pou kominikasyon ant front-end ak back-end. Egzanp: REST, JSON, GraphQL."
+  data-category="api"
+  data-img=""
+   
+  data-link="/paj/Web/kou_web.html#zouti4"
+  data-tag="api, rest, graphql, json, kominikasyon"
+  data-author="Ruthno"
+  data-date="2025-06-07"
+  data-level="Débutan"
+  data-type="Zouti">
+</li>
+
+<li class="search-item"
+  data-title="Hosting (Ospitalite Entènèt)"
+  data-description="Kote ou mete sit la sou entènèt. Egzanp: Vercel, Netlify, Firebase Hosting, Heroku, OVH."
+  data-category="deployment"
+  data-img=""
+   
+  data-link="/paj/Web/kou_web.html#zouti5"
+  data-tag="hosting, deployman, vercel, netlify, firebase hosting, heroku"
+  data-author="Ruthno"
+  data-date="2025-06-07"
+  data-level="Débutan"
+  data-type="Zouti">
+</li>
+
+<li class="search-item"
+  data-title="Kontwòl Vèsyon (Git + GitHub)"
+  data-description="Pou kolabore ak kontwole chanjman nan pwojè. Egzanp: Git, GitHub, GitLab, Bitbucket."
+  data-category="tools"
+  data-img=""
+   data-target=""
+  data-link="/paj/Web/kou_web.html#zouti6"
+  data-tag="git, github, version control, gitlab, bitbucket"
+  data-author="Ruthno"
+  data-date="2025-06-07"
+  data-level="Débutan"
+  data-type="Zouti">
+</li>
+
+<li class="search-item"
+  data-title="Sekirite"
+  data-description="Pou pwoteje done ak itilizatè. Egzanp: SSL, login verifye, sanitizasyon kòd."
+  data-category="security"
+  data-img=""
+   
+  data-link="/paj/Web/kou_web.html#zouti7"
+  data-tag="sekirite, ssl, login verifye, sanitizasyon"
+  data-author="Ruthno"
+  data-date="2025-06-07"
+  data-level="Débutan"
+  data-type="Zouti">
+</li>
+
+<li class="search-item"
+  data-title="DevOps"
+  data-description="Pou deplwaman otomatik, CI/CD, backup, log, ak kontwòl sèvis."
+  data-category="devops"
+  data-img=""
+   
+  data-link="/paj/Web/kou_web.html#zouti8"
+  data-tag="devops, ci/cd, backup, log, sèvis, deplwaman"
+  data-author="Ruthno"
+  data-date="2025-06-07"
+  data-level="Débutan"
+  data-type="Zouti">
+</li>
+<!-- Fen ZOUTI 1 - 8 -->
+  <!-- EGZANP SIT -->
+  <li class="search-item"
+    data-title="Egzanp sit konplè"
+    data-description="Yon egzanp konkrè sou kijan yon sit konplè ekri avèk HTML/CSS."
+    data-category=" "
+    data-img=""
+     
+    data-link="/paj/Web/kou_web.html#ekzanp-sit-komplè"
+    data-tag="egzanp-sit, html-css, pratik"
+    data-author="Ruthno"
+    data-date="2025-06-07"
+    data-level="Entèmedyè"
+    data-type="Egzanp">
+  </li>
+
+  <li class="search-item"
+    data-title="Konklizyon: Zouti Web"
+    data-description="Rezime sou zouti ki nesesè pou devlope yon sit entèaktif ak pwofesyonèl."
+    data-category=" "
+    data-img=""
+     
+    data-link="/paj/Web/kou_web.html#konklizyon-zouti-web"
+    data-tag="konklizyon, zouti-web, rezime"
+    data-author="Ruthno"
+    data-date="2025-06-07"
+    data-level="Débutan"
+    data-type="Atik">
+  </li>
+
+</ul>
+  <!-- mète lis kou yo:::<li data¬💬💬="":-->
+</ul>
+
+
+
+  
+</div>
+</body>
+
+<script>
+  const input = document.getElementById('searchInput');
+  const results = document.getElementById('resultList');
+  const suggestionList = document.getElementById('suggestionList');
+  const dataItems = document.querySelectorAll('#lessonData li');
+  const categoryFilter = document.getElementById('categoryFilter');
+  
+  const defaultImagesByCategory = {
+    HTML: "/paj/Web/Fichye média/html_logo.png",
+    CSS: "/paj/Web/Fichye média/css_logo.png",
+    JavaScript: "/paj/Web/Fichye média/js_logo.png",
+    default: "/paj/Web/Web.jpg",
+    none: "/paj/Web/Web.jpg"
+  };
+  
+  function displayResultItem(item) {
+    const li = document.createElement('li');
+    li.className = "result-item";
+    
+    const category = item.dataset.category || "none";
+    const imgSrc = item.dataset.img || defaultImagesByCategory[category] || defaultImagesByCategory.default;
+    const title = item.dataset.title || "San Tit";
+    const desc = item.dataset.description || "San deskripsyon";
+    const tag = item.dataset.tag || "";
+
+
+    const rawLink = item.dataset.link || "";
+    const targetSelector = item.dataset.target || "";
+    
+    li.innerHTML = `
+      <img src="${imgSrc}" alt="thumb" />
+      <div class="text">
+        <div class="title">${title}</div>
+        <div class="desc">${desc}</div>
+      </div>
+    `;
+    
+    li.addEventListener('click', () => {
+      if (targetSelector.startsWith("#")) {
+        const targetDiv = document.querySelector(targetSelector);
+        if (targetDiv) {
+          targetDiv.scrollIntoView({ behavior: "smooth" });
+          return;
+        }
+      }
+      
+      if (rawLink) {
+        const finalLink = rawLink.startsWith("http") || rawLink.startsWith("/") ?
+          rawLink : "https://" + rawLink;
+        
+        const iframe = document.getElementById("mainFrame");
+        const footer = document.querySelector(".footer");
+        
+        if (iframe) {
+          iframe.src = finalLink;
+          iframe.style.display = "block";
+        }
+        if (footer) {
+          footer.style.display = "block";
+        }
+      }
+    });
+    
+    results.appendChild(li);
+  }
+  
+  function displayNoResult() {
+    results.innerHTML = `
+      <li class="no-result">
+        <div class="no-result-content">
+          <img src="https://cdn-icons-png.flaticon.com/512/6134/6134065.png" alt="no result" style="width:90px; margin:16px; margin-top:30%;">
+          <p>Dezole ! Pa gen rezilta ki koresponn 🧐</p>
+          <p>
+            <svg width="100" height="50" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+              <g fill="none" stroke="#999" stroke-width="4" stroke-linecap="round">
+                <circle cx="90" cy="90" r="50" stroke="#888" fill="#f9f9f9" />
+                <line x1="125" y1="125" x2="180" y2="180" stroke="#888" />
+                <circle cx="75" cy="80" r="4" fill="#888" />
+                <circle cx="105" cy="80" r="4" fill="#888" />
+                <path d="M 75 105 Q 90 95 105 105" stroke="#888" fill="none" />
+              </g>
+            </svg>
+          </p>
+          <p><img width="200px" src="/assets/logo_header.png" style="margin:100% auto;" alt=""></p>
+        </div>
+      </li>
+    `;
+  }
+  
+function handleSearch() {
+  const term = input.value.toLowerCase().trim();
+  const selectedCategory = categoryFilter ? categoryFilter.value : "";
+  results.innerHTML = '';
+  
+  if (!term && !selectedCategory) return;
+  
+  const searchWords = term.split(/\s+/); // Separer tèm rechèch la an mo endividyèl
+  
+  const matchedItems = Array.from(dataItems).filter(item => {
+    const title = item.dataset.title?.toLowerCase() || "";
+    const desc = item.dataset.description?.toLowerCase() || "";
+    const category = item.dataset.category || "";
+    const tag = item.dataset.tag?.toLowerCase() || ""; // Resevwa tag yo tou, asire w ke ou met li an miniskil
+    
+    // Matche si nenpòt mo nan rechèch la egziste nan tit, deskripsyon, oswa tag
+    const matchText = searchWords.some(word => title.includes(word) || desc.includes(word)); // Tcheke si yon mo nan rechèch la egziste nan tit oswa deskripsyon
+    const matchCategory = selectedCategory === "" || category === selectedCategory;
+    const matchTag = searchWords.some(word => tag.includes(word)); // Tcheke si yon mo nan rechèch la egziste nan tag
+    
+    return (matchText || matchTag) && matchCategory; // Tcheke tout bagay
+  });
+  
+  if (matchedItems.length > 0) {
+    matchedItems.forEach(displayResultItem);
+  } else {
+    displayNoResult();
+  }
+}
+// ✅ Sijesyon otomatik sou input
+input.addEventListener('input', () => {
+  const term = input.value.toLowerCase().trim();
+  suggestionList.innerHTML = '';
+  
+  if (!term) return;
+  
+  // Fè yon lis de sijesyon ki sòti nan tit oswa tag yo
+  const suggestions = Array.from(dataItems)
+    .map(item => ({
+      title: item.dataset.title,
+      tag: item.dataset.tag || "",
+    }))
+    .filter(({ title, tag }) => {
+      const isMatchInTitle = title && title.toLowerCase().includes(term);
+      const isMatchInTag = tag && tag.toLowerCase().includes(term);
+      return isMatchInTitle || isMatchInTag; // Tcheke tou de
+    })
+    .slice(0, 5); // Limite sijesyon yo nan 5 premye
+  
+  suggestions.forEach(({ title }) => {
+    const li = document.createElement('li');
+    li.textContent = title;
+    li.className = 'suggestion-item';
+    li.addEventListener('click', () => {
+      input.value = title;
+      suggestionList.innerHTML = '';
+      handleSearch(); // Rechèch apre klike sou sijesyon an
+    });
+    suggestionList.appendChild(li);
+  });
+});
+  // ✅ Fè rechèch si ENTER peze
+  input.addEventListener('keydown', (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleSearch();
+      suggestionList.innerHTML = '';
+    }
+  });
+  
+  // ✅ Fè sijesyon disparèt si klike lòt kote
+  document.addEventListener('click', e => {
+    if (!suggestionList.contains(e.target) && e.target !== input) {
+      suggestionList.innerHTML = '';
+    }
+  });
+  
+  // ✅ Filtè pa kategori
+  if (categoryFilter) {
+    categoryFilter.addEventListener('change', handleSearch);
+  }
+</script>
+</div>
+          <div id="overlay"></div>
+          
+  
+</div>
+  <script>  // meni 3ba & navigation
+    const menuToggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('nav');
+    
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      nav.classList.toggle('show-nav');
+    });
+
+            
+        function toggleMenu() {
+          const sideMenu = document.getElementById('sideMenu');
+          const overlay = document.getElementById('overlay');
+          
+          sideMenu.classList.toggle('active');
+          overlay.classList.toggle('active');
+        }
+        
+       
+        document.getElementById('overlay').onclick = () => {
+          const sideMenu = document.getElementById('sideMenu');
+          const overlay = document.getElementById('overlay');
+          
+          sideMenu.classList.remove('active');
+          overlay.classList.remove('active');
+        };
+        // Lanse rechèch si moun peze "Enter"
+input.addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault(); // anpeche form voye si gen form
+    suggestionList.innerHTML = ''; // netwaye sijesyon
+    handleSearch(); // fè rechèch
+  }
+});
+
+// lanse rechèch avèk enter
+input.addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault(); // Pa kite fòm voye
+    handleSearch(); // Lanse rechèch
+  }
+});
+        function hideIframe() {
+  const iframe = document.getElementById("mainFrame");
+  const footer = document.querySelector(".footer");
+  if (iframe) iframe.style.display = "none";
+  if (footer) footer.style.display = "none";
+}
+        </script>
+
+
+
+        </html>

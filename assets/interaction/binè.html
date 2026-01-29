@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>APRANN SOU : BINÈ POU OU KONPRANN PI BYEN</title>
+</head>
+<style>/* Stylizasyon pou seksyon nivo 023 */
+.level {
+max-width: 1200px;
+margin: auto;
+padding: 2rem;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background: #ffffff;
+color: #222;
+line-height: 1.6;
+box-shadow: 0 0 20px rgba(0,0,0,0.1);
+border-radius: 12px;
+}
+
+/* Tit prensipal */
+.level h2 {
+font-size: 2rem;
+text-align: center;
+margin-bottom: 2rem;
+color: #0099cc;
+}
+
+/* Tit seksyon yo */
+.level h3 {
+font-size: 1.5rem;
+margin-top: 2rem;
+color: #0099cc
+
+
+
+;
+border-left: 5px solid #66cc33;
+padding-left: 10px;
+}
+
+/* Tab */
+.level table {
+width: 100%;
+border-collapse: collapse;
+margin: 1rem 0;
+background-color: #f8f9fa;
+}
+
+.level table th,
+.level table td {
+padding: 10px;
+border: 1px solid #ccc;
+text-align: center;
+}
+
+.level table thead {
+background-color: #0099cc;
+color: #fff;
+}
+
+/* Blok sitasyon */
+.level blockquote {
+background: #e6f7ff;
+border-left: 5px solid #0099cc;
+margin: 1.5rem 0;
+padding: 1rem;
+font-style: italic;
+}
+
+/* Bouton */
+.level button {
+transition: background-color 0.3s ease;
+}
+
+.level button:hover {
+opacity: 0.9;
+}
+
+/* Resposiv Layout */
+@media (max-width: 768px) {
+.level {
+padding: 1rem;
+}
+
+.level h2 {
+font-size: 1.6rem;
+}
+
+.level h3 {
+font-size: 1.2rem;
+}
+
+.level table th,
+.level table td {
+font-size: 0.9rem;
+padding: 8px;
+}
+}
+
+/* Antre input stil */
+.level input[type="text"],
+.level input[type="number"] {
+box-sizing: border-box;
+}
+
+/* Fòmasyon lis yo */
+.level ol, .level ul {
+padding-left: 20px;
+}</style>
+<body>
+<a href="/paj/kou1.html">RETOUNEN</a>  
+    <div class="level" id="023">
+    <h2> Nimewo Binè ak Desimal </h2>
+    <section>
+      <h3>1. Ki sa yon nimewo binè ye?</h3>
+      <p>Sistèm binè a itilize sèlman <strong>2 chif</strong>: 0 ak 1. Chak chif nan sistèm sa a rele yon <strong>bit</strong>. Se li menm òdinatè yo sèvi ak li pou tout bagay, depi ou klike sourit ou jis rive nan soti videyo sou YouTube. Poukisa? Paske li senp, dirèk, epi li mache ak tout sa ki elektwonik!</p>
+    </section>
+    <section>
+      
+      <p>Sistèm binè a sèvi ak 2 chif sèlman: 0 ak 1. Chak chif binè rele <strong>bit</strong>. Se lang prensipal òdinatè yo, paske yo senp epi efikas.</p>
+      <h3>2. Konvèti binè pou rive nan desimal</h3>
+      <p>Lè ou vle konvèti yon nimewo binè an desimal, ou dwe:</p>
+      <ol>
+        <li>Kòmanse ak bit ki pi adwat la (LSB)</li>
+        <li>Chak bit miltipliye pa 2 a pouvwa(pwisans^) pozisyon li</li>
+        <li>Ajoute tout valè yo ansanm</li>
+        
+      </ol>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Bit</th>
+            <th>2^Pozisyon</th>
+            <th>Miltiplikasyon</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>2² = 4</td>
+            <td>1 × 4 = 4</td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>2¹ = 2</td>
+            <td>0 × 2 = 0</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>2⁰ = 1</td>
+            <td>1 × 1 = 1</td>
+          </tr>
+          <tr>
+            <td colspan="2"><strong>Total:</strong></td>
+            <td><strong>5</strong></td>
+          </tr>
+        </tbody>
+      </table>
+      <blockquote><strong>Sonje:</strong> chak pozisyon nan nimewo binè a gen pouvwa 2 li. Ou konvèti l tankou ou tap fè lajan sou WhatsApp — bit pa bit.</blockquote>
+      
+    </section>
+    <section>
+      <h3>3. Egzanp konplè: 110101 an desimal</h3>
+      <p>Ann pran 110101, ann mete l sou fòm tab pou nou pi klè:</p>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Bit</th>
+            <th>2^Pozisyon</th>
+            <th>Miltiplikasyon</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>2⁵ = 32</td>
+            <td>1 × 32 = 32</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>2⁴ = 16</td>
+            <td>1 × 16 = 16</td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>2³ = 8</td>
+            <td>0 × 8 = 0</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>2² = 4</td>
+            <td>1 × 4 = 4</td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>2¹ = 2</td>
+            <td>0 × 2 = 0</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>2⁰ = 1</td>
+            <td>1 × 1 = 1</td>
+          </tr>
+          <tr>
+            <td colspan="2"><strong>Total:</strong></td>
+            <td><strong>53</strong></td>
+          </tr>
+        </tbody>
+      </table>
+      <blockquote><strong>MSB:</strong> chif ki pi a goch | <strong>LSB:</strong> chif ki pi a dwat</blockquote>
+    </section>
+    <section>
+      <h3>4. Konvèti desimal pou rive nan binè</h3>
+      <p>Metòd: Fè divizyon pa 2 jiskaske ou rive nan 0. Chak rès ou jwenn, ou mete l sou bò dwat. Egzanp:</p>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Divizyon</th>
+            <th>Kosyan</th>
+            <th>Rès</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>13 ÷ 2</td>
+            <td>6</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>6 ÷ 2</td>
+            <td>3</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>3 ÷ 2</td>
+            <td>1</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>1 ÷ 2</td>
+            <td>0</td>
+            <td>1</td>
+          </tr>
+        </tbody>
+      </table>
+      <p><strong>Binè =</strong> li rès yo soti anba monte anlè: <strong>1101</strong></p>
+      <blockquote>Binè a parèt kòm refleksyon matematik la nan glas lojik elektwonik.</blockquote>
+    </section>
+    <section>
+      <h3>5. Binè negatif: Siy ak konpleman de</h3>
+      <p>Lè yon nimewo negatif, òdinatè itilize <strong>konpleman de</strong>. Se tankou li mete yon mas sou chif la pou li di "M pa pozitif!"</p>
+      <ol>
+        <li>Retire siy la</li>
+        <li>Ranvèse chak bit (1 vin 0, 0 vin 1)</li>
+        <li>Ajoute 1 sou rezilta a</li>
+      </ol>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Etap</th>
+            <th>Valè</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Binè orijinal</td>
+            <td>11111110</td>
+          </tr>
+          <tr>
+            <td>San siy</td>
+            <td>1111110</td>
+          </tr>
+          <tr>
+            <td>Ranvèse</td>
+            <td>0000001</td>
+          </tr>
+          <tr>
+            <td>+1</td>
+            <td>0000010</td>
+          </tr>
+          <tr>
+            <td>Valè final</td>
+            <td>-2</td>
+          </tr>
+        </tbody>
+      </table>
+      <blockquote>Konpleman de: se fason òdinatè sèvi ak binè pou fè l wè sa ki negatif san l pa blese tèt li.</blockquote>
+    </section>
+    <section>
+      <h3>6. Lòt operasyon binè</h3>
+      <p>Ou ka itilize binè pou tout matematik tankou:</p>
+      <ul>
+        <li>Ajoute (Addition)</li>
+        <li>Soutire (Subtraction)</li>
+        <li>Miltipliye (Multiplication)</li>
+        <li>Divize (Division)</li>
+      </ul>
+      <p>Ak kèk operasyon lojik tankou: <strong>AND</strong>, <strong>OR</strong>, <strong>XOR</strong>, <strong>NOT</strong>.</p>
+      <blockquote>Sa yo se zouti sekrè òdinatè yo. Yo sèvi ak yo chak fwa ou peze "enter"!</blockquote>
+    </section>
+    <section style="max-width: 400px; margin: auto; font-family: Arial, sans-serif; padding: 20px; border: 1px solid #ccc; border-radius: 8px; background: #f9f9f9;">
+      <h3 style="text-align: center; color: #007acc;">7. Kalkilatris Konvètisè Binè/Desimal</h3>
+      <p id="result" style="margin-top: 20px; padding: 10px; border-radius: 4px; background-color: #fff3cd; color: #856404; font-weight: bold; text-align: center;"></p>
+      <label for="binary" style="display: block; margin-top: 15px; font-weight: bold;">Antre yon nimewo binè:</label>
+      <input type="text" id="binary" placeholder="Egzanp: 1011" style="width: 100%; padding: 8px; margin-top: 5px; border-radius: 4px; border: 1px solid #ccc;">
+      
+      <button onclick="toDecimal()" style="margin-top: 10px; width: 100%; background-color: #007acc; color: white; padding: 10px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
+        Konvèti an Desimal
+      </button>
+      
+      <hr style="margin: 20px 0;">
+      
+      <label for="decimal" style="display: block; font-weight: bold;">Antre yon nimewo desimal:</label>
+      <input type="number" id="decimal" placeholder="Egzanp: 13" style="width: 100%; padding: 8px; margin-top: 5px; border-radius: 4px; border: 1px solid #ccc;">
+      
+      <button onclick="toBinary()" style="margin-top: 10px; width: 100%; background-color: #28a745; color: white; padding: 10px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
+        Konvèti an Binè
+      </button>
+      
+      <h3>
+        <!--Tab to edit-->©RTHN7877
+      </h3>
+      
+    </section>
+    
+    <script>
+      function toDecimal() {
+        const binaryInput = document.getElementById("binary");
+        const result = document.getElementById("result");
+        const binary = binaryInput.value.trim();
+        
+        if (binary === "") {
+          result.style.backgroundColor = "#f8d7da";
+          result.style.color = "#721c24";
+          result.innerText = "Tanpri antre yon nimewo binè!";
+          binaryInput.focus();
+          return;
+        }
+        
+        if (!/^[01]+$/.test(binary)) {
+          result.style.backgroundColor = "#f8d7da";
+          result.style.color = "#721c24";
+          result.innerText = "Tanpri antre sèlman chif 0 ak 1 nan nimewo binè a!";
+          binaryInput.focus();
+          return;
+        }
+        
+        const decimal = parseInt(binary, 2);
+        result.style.backgroundColor = "#d4edda";
+        result.style.color = "#155724";
+        result.innerText = `Desimal: ${decimal}`;
+      }
+      
+      function toBinary() {
+        const decimalInput = document.getElementById("decimal");
+        const result = document.getElementById("result");
+        const decimal = decimalInput.value.trim();
+        
+        if (decimal === "") {
+          result.style.backgroundColor = "#f8d7da";
+          result.style.color = "#721c24";
+          result.innerText = "Tanpri antre yon nimewo desimal!";
+          decimalInput.focus();
+          return;
+        }
+        
+        if (decimal < 0 || !Number.isInteger(Number(decimal))) {
+          result.style.backgroundColor = "#f8d7da";
+          result.style.color = "#721c24";
+          result.innerText = "Tanpri antre yon nimewo desimal antye pozitif!";
+          decimalInput.focus();
+          return;
+        }
+        
+        const binary = Number(decimal).toString(2);
+        result.style.backgroundColor = "#d4edda";
+        result.style.color = "#155724";
+        result.innerText = `Binè: ${binary}`;
+      }
+    </script>
+    </section>
+  </div>
+  
+</body>
+
+</html>

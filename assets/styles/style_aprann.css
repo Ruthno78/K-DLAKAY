@@ -1,0 +1,705 @@
+ 
+
+body::selection {
+  background: rgba(0, 51, 102, 0.52);
+  color: #fff;
+}
+/* Bouton meni twa ba */
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  /* Mete bouton an adwat pou adaptabilite */
+  z-index: 1001;
+}
+
+a {color: #0099cc;}
+/* Chak ba meni an */
+.bar {
+  width: 100%;
+  height: 5.3px;
+  background-color: #0077b6;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Navigasyon prensipal */
+nav {
+  background: linear-gradient(135deg, #0077b6, #0099cc);
+  color: white;
+  padding: 10px;
+  position: fixed;
+  top: 65px;
+  right: 10px;
+  display: none;
+  flex-direction: column;
+  border-radius: 1px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 9000;
+}
+
+/* Lyen navigasyon */
+nav a {
+  color: linear-gradient(135deg, #0077b6, #0099cc);
+  background: white;
+  margin: 5px;
+  text-decoration: none;
+  padding: 5px 0;
+  font-weight: bold;
+  border-bottom: 1px solid linear-gradient(135deg, #0077b6, #0099cc);
+  transition: 0.2s;
+  text-transform: uppercase;
+}
+
+nav a:hover {
+  color: #FFFFFF;
+  background: linear-gradient(135deg, #0077b6, #0099cc);
+  text-shadow: 1px 2px 3px;
+}
+
+
+/* Animasyon lè bouton an aktive */
+.active .bar:nth-child(1) {
+  transform: rotate(45deg) translateY(10px);
+}
+
+.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translateY(-10px);
+}
+
+/* Fè meni an parèt */
+.show-nav {
+  display: flex;
+}
+
+/* Responsivite pou ti ekran */
+@media (max-width: 600px) {
+  nav {
+    right: 10px;
+    top: 60px;
+    width: 40%;
+    padding: 10px;
+    
+    
+  }
+  
+  .menu-toggle {
+    right: 15px;
+  }
+  
+  nav a {
+    font-size: 0.95rem;
+    padding: 10px 3px;
+  }
+}
+ /* --- Footer prensipal pou sipò --- */
+ .support-footer {
+  
+  
+  background: linear-gradient(97deg, #0EC0FB, #FC4F4FEB);
+  color:#0EC0FB;
+  
+  padding: 13px 13px;
+  text-align: center;
+  width: 100%;
+  top: 0;
+  border-top-left-radius:
+    15px;
+  border-top-right-radius: 15px;
+  box-shadow: none;
+  animation: fadeInUp 1.5s ease-out;
+  position: relative;
+  
+}
+/* Basik selektè ou te bay, kenbe koulè tèks blan */
+ .support-footer a {
+  color: #FFFFFF;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  padding: 4px 2px;
+
+}
+
+
+
+
+ 
+/* --- Espas pou lyen yo --- */
+.footer-links {
+  margin-top: 15px;
+}
+
+/* --- Bouton entèaktif --- */
+.footer-links .btn {
+  display: inline-block;
+  padding: 12px 24px;
+  margin: 10px 5px;
+  background-color: #F3E7E7;
+  color: #FF000070; 
+  border-radius: 9px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-links .btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Efè hover pi pwofesyonèl */
+}
+
+
+  
+
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+      .level {
+      display: none;
+      border: 2px solid #0099cc;
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      background-color: #f5f5f5;
+    }
+    .level.active {
+      display: block;
+    }
+    #navigation {
+      display: flex;
+      justify-content: space-between;
+      max-width: 300px;
+  
+      margin: 20px auto;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #3338CC;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: none;
+      color: #3338CC70;
+    }
+
+  /* paramèt*/       /* paramèt*/
+.paramet-container {
+  
+  top:0px;
+  right: 0px;
+  width: 150px;
+  padding: 10px;
+  border-radius: 50px;
+  
+  display: flex;
+  flex-direction: row; 
+  gap: 0px;
+  align-items: end; 
+}
+.paramet {
+  
+  top: 10%;
+  right: 10px;
+  padding: 15px;
+  border-radius: 50px;
+  box-shadow: 2 20 10px rgba(0, 2, 0, 0.1); /* korije valè shadow la */
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  
+}
+.paramet-container:hover {
+ background: none;
+ transition: transform 23s ease-in-out;
+}
+.paramet:hover {
+  background:none;
+  transition: transform 23s ease-in-out;
+}
+.paramet svg {
+      width: 32px;
+      height:32px;
+      stroke: #235287;
+      fill: none;
+     
+    }
+  img.icon {
+   height: 80px;
+   margin-bottom: 1rem;
+}
+  
+    .btn {
+      border-radius: 10%;
+      cursor: pointer;
+      background:none;
+      border: none;
+      outline: none;
+      
+    }
+    
+    .btn1 {
+      
+      border-radius: 10px;
+      cursor: pointer;
+      background:none;
+      border: none;
+      
+      transition: transform 0.2s;
+    }
+    
+
+    .btn1:hover {
+      transform: scale(1.1) rotate(360deg);
+      transition: all 0.6s ease-in-out;
+    }
+    svg:hover { 
+      stroke: #D9DCF7;
+    }
+    svg {
+      width: 32px;
+      height: 32px;
+      stroke: #4C7EB7;
+      fill: none;
+    }
+    
+    
+    /* paramèt*/          
+     
+    body {
+      margin: 0;
+      font-family: 'georgia', sans-serif;
+      background: #f2f2f2;
+      color: #333;
+      overflow-x: hidden;
+    }
+    
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 95%;
+  padding: 31px 20px;
+  
+  background-color: #fff;
+  
+
+  display: flex;
+  
+  justify-content: space-between;
+  z-index: 999;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+
+  
+  height: 2px;
+
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  opacity: 100%;
+  width: 92px;
+  weight: auto;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+
+    .header-right img {
+      width: 40px;
+      
+    }
+.side-menu {
+  opacity: 92%;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 70%;
+  height: 100%;
+  max-width: 480px !important;
+  background: #FFFFFF;
+  padding-top: 70px;
+  transition: left 0.4s ease;
+  z-index: 1000;
+  overflow-y: auto;
+  ;
+}
+    .side-menu.active {
+      left: 0;
+    }
+  .social-icon {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  margin: 10px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.navSide {
+    display: flex;
+    top:10px ;
+    position: fixed ;
+    justify-content: space-between ; /* Alinye lyen yo nan sant */
+    gap: 10px; /* Espas ant lyen yo */
+    width: 69%;
+    outline:  none ;
+transition: all 0.3s ease;
+
+    
+}
+.navSide:hover{
+  background: #0077b6;
+  
+}
+ .navSide a{ color: #0077b6 !important;
+ outline:  4px solid #0077b6; }
+ .navSide a:hover {
+transform: scale(1.3) !important;
+background: #0077b6;
+border-color:#fff !important ;
+  color: #fff !important;
+}
+.social-icon:hover {
+  transform: scale(1.1);
+  filter: grayscale(100%) brightness(100%);
+}
+
+.side-menu a {
+  opacity: 1;
+  
+  color: #2FADE9;
+  border-left: 1px solid;
+  padding: 10px 10px 10px;
+  background: #FFFFFF;
+  border-right: 1px solid;
+  margin: 2px;
+  justify-content: space-between;
+  font-size: 0.94rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  
+}
+
+.side-menu a:hover {
+  transform: scale(1.2);
+  color: #0EC0FB;
+  
+}
+    .footer-column a img[src*="TikTok"],
+.footer-column a img[src*="YouTube"] {
+  width: 85px;
+  height: auto;
+}
+  
+#overlay {
+  top: 0;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3); 
+  backdrop-filter: blur(5px); 
+  -webkit-backdrop-filter: blur(5px); /* Sipò pou Safari */
+  display: none;
+  z-index: 800;
+}
+
+#overlay.active {
+  display: block;
+}
+    main {
+      padding-top: 100px;
+      text-align: center;
+    }
+    .layout-container {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+ 
+.retou-btn button {
+  background-color: #FFFFFFBD;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+
+    .custom-img {
+      width: 100px;
+      height: auto;
+      margin: 10px;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+    .custom-img:hover {
+      transform: scale(1.05);
+    }
+    .img-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 100px;
+    }
+    .img-wo {
+      width: 60px;
+      margin-top: 20px;
+    }
+    .img-ba {
+      width: 70px  ;
+      margin-top: 10px;
+    }
+    
+    .img-fiks {
+     opacity: 87%;
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      width: 70px ;
+      z-index: 1000;
+      animation: glise 5s ease-in-out infinite;
+      cursor: pointer;
+    }
+    @keyframes glise {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+      100% { transform: translateY(0); }
+    }
+    #popup {
+      font-family: 'Georgia',
+serif;
+position: fixed;
+bottom: 90px;
+right: 15px;
+background-color: #ffffff;
+padding: 8px 12px;
+border-radius: 0.5rem;
+text-align: center;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+display: none;
+z-index: 1001;
+max-width: 240px;
+max-height: 80%;
+border: 1px solid #ddd;
+    }
+        #popup ul li {
+      
+      list-style: none;
+    }
+    #popup a {
+      color: #0099cc;
+      font-weight: bold;
+      text-decoration: none;
+    }
+            .chwazi ul {
+list-style: none;
+padding: 0;
+animation: appearSoft 1s ease-in;
+}
+
+
+.chwazi ol li {
+margin: 12px 0;
+list-style : none;
+}
+
+.chwazi ol li a {
+padding: 25px;
+
+
+background: #FC4F4FEB;
+color: lightcyan;
+border-block-start: 3px solid #63C3E0;
+text-decoration: none;
+border-radius: 10px;
+font-size: 18px;
+display: inline-block;
+transition: background 0.4s, transform 0px.3s
+
+}
+
+.chwazi ol li a:hover {
+  color:#FC4F4FEB !important;
+background: #63C3E0 !important;
+transform: scale(1.09);
+}
+  
+   /*footer*//*footer*//*footer*//*footer*//*footer*//*footer*/
+
+.footer-column h4 {
+                    margin-bottom: 10px;
+}
+
+.footer-column ul {
+list-style: none;
+padding: 0;
+}
+
+.footer-column ul li {
+margin: 5px 0;
+}
+
+.footer-column ul li a,
+.footer-column p,
+.footer-column a {
+text-decoration: none;
+font-size: 0.99rem;
+text-align: justify;
+margin: 8px;
+}
+
+.footer-column a {
+color: #63C3E0;
+}
+/* div yo ki gen kou yo*/ /* div yo ki gen kou yo*/ 
+
+
+
+
+
+
+
+
+
+img.icon {
+   height: 80px;
+   margin-bottom: 1rem;
+}
+
+
+
+/* div yo ki gen kou yo*//* div yo ki gen kou yo*//* div yo ki gen kou yo*/
+@keyframes fadeIn {
+from { opacity: 0; }
+to { opacity: 1; }
+}
+
+
+.footer-column h4 {
+font-size: 1rem;
+   color:#63C3E0;
+   }
+
+.footer-column ul {
+list-style: none;
+padding: 0;
+}
+
+.footer-column ul li {
+margin: 5px 0;
+}
+
+.footer-column ul li a,
+.footer-column p,
+.footer-column a {
+
+text-decoration: none;
+}
+
+
+
+@keyframes fadeIn {
+from { opacity: 0; }
+to { opacity: 1; }
+}
+/*footer*//*footer*//*footer*//*footer*//*footer*//*footer*/
+
+/*Sa ki nan neni yon bò a*//*Sa ki nan neni yon bò a*//*Sa ki nan neni yon bò a*/
+
+.side-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 10px;
+  margin-top: 10px; /* Ajoute espas pou deplase li pi ba */
+}
+
+
+
+.anons {
+  display: flex;
+  flex-wrap: wrap; /* Fè videyo yo ajiste otomatikman */
+  justify-content: center; /* Mete yo nan sant */
+  align-items: center;
+  gap: 10px; /* Espas ant videyo yo */
+  flex-basis: 5%;
+  background-color: #ffffff80;
+  margin: 5px 0;
+  padding: 8px;
+  border-radius: 8px;
+  text-align: center;
+}
+.anons video {
+  max-width: 100%;
+  border-radius: 8px;
+}
+.anons-google {
+  flex-basis: 10%;
+  background-color: #f2f2f2;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.anons-afilye {
+  flex-basis: 5%;
+  background-color: #cce5ff;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.btn-abandone {
+  margin-top: 8px ;
+  display: block;
+  background-color: #3ADA9B;
+  color: red ;
+  text-align: center;
+  padding: 6px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+
+.btn-abandone:hover {
+  background-color: #0099cc;
+}
+.dark-theme   {
+  background-color: #000000B3!important;
+  
+}
+
+
+
+  

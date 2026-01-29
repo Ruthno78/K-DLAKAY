@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ht">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OPSYON KALKILATÈ</title>
+  <style>
+    /* STYLE MODÈN PWOFESYONÈL AK ORIJINALITE */
+    :root {
+      --ble: #0099cc;
+      --vèt: #66cc33;
+      --nwa: #000000;
+      --fon: #f8fafc;
+      --font-prensipal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--fon);
+      font-family: var(--font-prensipal);
+      color: var(--nwa);
+    }
+
+    #kalkilatè-pwogram {
+      max-width: 500px;
+      margin: 30px auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      padding: 30px 28px;
+      border: 1px solid #e5e7eb;
+    }
+
+    #kalkilatè-pwogram h3 {
+      text-align: center;
+      color: var(--ble);
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    #kalkilatè-pwogram label {
+      display: block;
+      font-weight: bold;
+      margin: 16px 0 6px;
+    }
+
+    #kalkilatè-pwogram input[type="number"],
+    #kalkilatè-pwogram select {
+      width: 100%;
+      height:100%;
+      padding: 10px 14px;
+      font-size: 16px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      background-color: #f9fafb;
+      transition: border 0.2s;
+    }
+
+    #kalkilatè-pwogram input:focus,
+    #kalkilatè-pwogram select:focus {
+      border-color: var(--ble);
+      outline: none;
+    }
+
+    .btn-kalkil {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .btn-kalkil button {
+      flex: 1;
+      padding: 12px;
+      font-size: 15px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn-kalkil .kalkile {
+      background-color: var(--ble);
+      color: white;
+    }
+
+    .btn-kalkil .kalkile:hover {
+      background-color: var(--vèt);
+    }
+
+    .btn-kalkil .reset {
+      background-color: #f3f4f6;
+      color: #111827;
+    }
+
+    .btn-kalkil .reset:hover {
+      background-color: #d1d5db;
+    }
+
+    .code-output {
+      margin-top: 20px;
+      padding: 16px;
+      background-color: #eef6ff;
+      border-left: 4px solid var(--ble);
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 15px;
+      white-space: pre-wrap;
+      color: #1f2937;
+    }
+
+    .rezilta-final {
+      margin-top: 14px;
+      padding: 12px;
+      background-color: #e6ffed;
+      color: #157347;
+      border: 1px solid #a3e635;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .kijan-itilize {
+      font-size: 14px;
+      color: #4b5563;
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div id="kalkilatè-pwogram">
+    <h3>Kalkilatè Operatè Atribisyon</h3>
+
+    <div class="code-output" id="kòd-egzanp"></div>
+    <div class="rezilta-final" id="rezilta"></div>
+
+    <label for="val-result">Valè inisyal pou <code>result</code>:</label>
+    <input type="number" id="val-result" value="7" step="any" />
+
+    <label for="op-select">Operasyon pou aplike:</label>
+    <select id="op-select">
+      <option value="+=">Ajoute & Afekte (+=)</option>
+      <option value="-=">Soustrè & Afekte (-=)</option>
+      <option value="*=" selected>Miltipliye & Afekte (*=)</option>
+      <option value="/=">Divize & Afekte (/=)</option>
+      <option value="%=">Rès & Afekte (%=)</option>
+    </select>
+
+    <label for="val-a">Valè pou <code>a</code>:</label>
+    <input type="number" id="val-a" value="2" step="any" />
+
+    <div class="btn-kalkil">
+      <button class="kalkile" onclick="fèKalkil()">Kalkile</button>
+      <button class="reset" onclick="reyajiste()">Reyajiste</button>
+    </div>
+
+    <p class="kijan-itilize">
+      <strong>Kijan pou itilize:</strong><br />
+      Mete yon valè inisyal pou <code>result</code>, chwazi yon operatè, epi mete valè <code>a</code>. Klike sou <strong>"Kalkile"</strong> pou w wè rezilta ak kòd ou a. <br />
+      Ou ka itilize bouton <strong>"Reyajiste"</strong> pou rekòmanse.
+    </p>
+  </div>
+
+  <script>
+    const valResult = document.getElementById('val-result');
+    const valA = document.getElementById('val-a');
+    const opSelect = document.getElementById('op-select');
+    const kòdEgzanp = document.getElementById('kòd-egzanp');
+    const reziltaFinal = document.getElementById('rezilta');
+
+    function meteKòdAkRezilta() {
+      let result = parseFloat(valResult.value);
+      let a = parseFloat(valA.value);
+      let op = opSelect.value;
+
+      if (isNaN(result) || isNaN(a)) {
+        kòdEgzanp.textContent = "Tanpri mete de valè ki valid pou result ak a.";
+        reziltaFinal.textContent = "";
+        return;
+      }
+
+      let egzanpKòd = `result = ${result}\na = ${a}\nresult ${op} a`;
+
+      switch (op) {
+        case "+=": result += a; break;
+        case "-=": result -= a; break;
+        case "*=": result *= a; break;
+        case "/=": result /= a; break;
+        case "%=": result %= a; break;
+      }
+
+      kòdEgzanp.textContent = egzanpKòd;
+      reziltaFinal.textContent = `Rezilta final: ${result}`;
+    }
+
+    function fèKalkil() {
+      meteKòdAkRezilta();
+    }
+
+    function reyajiste() {
+      valResult.value = "";
+      valA.value = "";
+      opSelect.value = "*=";
+      kòdEgzanp.textContent = "";
+      reziltaFinal.textContent = "";
+    }
+
+    valResult.addEventListener('input', meteKòdAkRezilta);
+    valA.addEventListener('input', meteKòdAkRezilta);
+    opSelect.addEventListener('change', meteKòdAkRezilta);
+
+    meteKòdAkRezilta();
+  </script>
+</body>
+</html>

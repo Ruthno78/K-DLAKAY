@@ -1,0 +1,224 @@
+  <style>
+  
+  .side-menu {
+  opacity: 92%;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 70%;
+  height: 100%;
+  background: #FFFFFF;
+  padding-top: 70px;
+  transition: left 0.4s ease;
+  z-index: 1000;
+  overflow-y: auto;
+  ; 
+}
+
+.side-menu.active {
+  left: 0px;
+}
+#overlay {
+  top: 0;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  
+  backdrop-filter: blur(3px);
+  
+  -webkit-backdrop-filter: blur(5px);
+  /* Sipò pou Safari */
+  display: none;
+  z-index: 800;
+}
+#overlay.active {
+  display: block;
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 95%;
+  padding: 31px 20px;
+  
+  background-color: #fff;
+  border-bottom: 1px solid #EE6C71;
+
+  display: flex;
+  
+  justify-content: space-between;
+  z-index: 999;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+
+  
+  height: 2px;
+
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+logo {
+  opacity: 100%;
+  width: 92px;
+  weight: auto;
+  margin-top: 10px;
+  cursor: pointer;
+}
+  /* Lyen meni nan mòd fènwa */
+.darktheme nav a {
+  color: #d3a6ff;
+}
+
+/* Lyen sou hover nan dark theme */
+.darktheme nav a:hover {
+  color: #ff99cc; /* Wouj pal oswa roz */
+}
+/* Bouton meni twa ba */
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  position: fixed;
+  top: 20px;
+  right: 20px; /* Mete bouton an adwat pou adaptabilite */
+  z-index: 1001;
+}
+.dark-theme .bar { background-color: #FFFFFF;}
+
+/* Chak ba meni an */
+.bar {
+  height: 4px;
+  background-color: #FF1C1C; /* Wouj fonse */
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Navigasyon prensipal */
+nav {
+  background-color: #0099cc; /* Ble fonse */
+  color: white;
+  padding:15px 15px 
+  position: fixed;
+  top: 60px;
+  right: 10px;
+  display: none;
+  flex-direction: column;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+/* Lyen navigasyon */
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 0;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  text-decoration: underline;
+  color: #ffcccc; /* Wouj pal sou hover */
+}
+
+/* Animasyon lè bouton an aktive */
+.active .bar:nth-child(1) {
+  transform: rotate(45deg) translateY(10px);
+}
+
+.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translateY(-10px);
+}
+
+/* Fè meni an parèt */
+.show-nav {
+  display: flex;
+}
+
+/* Responsivite pou ti ekran */
+@media (max-width: 600px) {
+  nav {
+    right: 10px;
+    top: 60px;
+    width: 80%;
+    padding: 20px;
+  }
+
+  .menu-toggle {
+    right: 15px;
+  }
+
+  nav a {
+    font-size: 18px;
+    padding: 12px 0;
+  }
+}
+  
+</style>
+    <div class="header">
+    <div class="header-left">
+      <img src="/assets/logo_header.png" alt="Logo" class="logo" onclick="toggleMenu()">
+      
+    </div>
+    
+  </div>
+          <!-- Bouton twa ba -->
+        <div class="menu-toggle" id="menu-toggle">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <!-- Navigasyon -->
+        <nav id="nav">
+          <a href="/index.html">Akèy</a>
+          <a href="/egzese.html">Egzèse</a>
+          <a href="/donasyon.html">kontakte nou</a>
+          
+        </nav>
+        </div>
+        </div>
+        
+          <div class="side-menu" id="sideMenu"></div>
+          <div id="overlay"></div>
+  <script>  // meni 3ba & navigation
+    const menuToggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('nav');
+    
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      nav.classList.toggle('show-nav');
+    });
+
+            
+        function toggleMenu() {
+          const sideMenu = document.getElementById('sideMenu');
+          const overlay = document.getElementById('overlay');
+          
+          sideMenu.classList.toggle('active');
+          overlay.classList.toggle('active');
+        }
+        
+       
+        document.getElementById('overlay').onclick = () => {
+          const sideMenu = document.getElementById('sideMenu');
+          const overlay = document.getElementById('overlay');
+          
+          sideMenu.classList.remove('active');
+          overlay.classList.remove('active');
+        };</script>

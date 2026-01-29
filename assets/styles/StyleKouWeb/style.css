@@ -1,0 +1,270 @@
+
+/* 
+  /* ===== LEVEL CONTAINER ===== */
+.level_container {
+  
+  display: grid;
+  grid-template-columns: 18% 1fr; /* Side menu 18%, kontni nivo 82% */
+  gap: 1rem;
+  position: relative;
+}
+.level {
+  /* Visibilité */
+  display: none; 
+
+  /* Aparans */
+  background-color: #fff;
+  color: #1c1c1c;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.6;
+
+  /* Layout */
+  width: 100%;
+  max-width: 1500px;
+  margin: 66px auto 25px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  /* Flex kontni */
+  
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  /* Gestion texte */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  overflow: visible;
+}
+
+@media (max-width: 768px) {
+  .level {
+    padding: 4px;
+    width: 100% !important;
+    margin-top: 60px;
+  }
+}
+  
+ .level h2 {
+    position: sticky;
+    top: 62px; 
+    z-index: 800;
+    background: white; 
+    text-transform: uppercase ;
+    padding-bottom: 0.3rem;
+    margin-top: 32px; 
+    text-align: center;
+    font-size: 1.1rem;
+    color: #006699;
+    border-bottom: 2px solid #7C8C94;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    transition: all 0.4s ease-in-out;
+    animation: fadeSlide 1s ease-in-out both;
+}
+
+
+
+
+  .level h3 {
+    color: #0383C3;
+    margin-bottom: 0.3rem;
+margin-left: 0.2rem; 
+display: inline ;
+    font-size: 1.1rem; 
+    text-decoration: underline ; 
+    text-decoration-color: #CCCCCC30 ;
+    
+  }
+  
+  .level ul {
+    margin-left: 1.5rem;
+    list-style-type: square;
+    color: #333;
+  }
+  
+  .level li {
+    margin-bottom: 0.5rem;
+    font-size: 0.99rem;
+  }
+  
+  .level li ul ol p em th strong td {
+    font-size: 0.99rem;
+  }
+  
+  .level p {
+    margin: 0.6rem 0;
+    color: #2a2a2a;
+    
+  }
+  
+  .level em {
+    font-style: italic;
+    color: #555;
+  }
+  
+  .level strong {
+    font-weight: bold;
+    color: #cc3300;
+    font-size: 1rem;
+    /* Ti makaj wouj-fonse pou mete aksan */
+  }
+  
+  
+    
+  
+  .level img,
+  .level table,
+  .level pre,
+  .level iframe {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .level table {
+    width: 100%;
+    height: auto;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    background-color: #fff;
+    font-size: 1rem;
+  }
+  
+  .level table code {
+    font-size: 0.97rem;
+  }
+  
+  .level th {
+    background-color: #e6f7ff;
+    color: #003366;
+    padding: 0.4rem;
+    border: 1px solid #ccc;
+    text-align: left;
+    font-size: 0.90rem;
+  }
+  
+  .level td {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  
+  .level textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    font-family: inherit;
+    border-radius: 6px;
+    resize: vertical;
+  }
+  
+  .level i,
+  .level u {
+    color: #005577;
+  }
+  
+  .level blockquote {
+    border-left: 4px solid #0099cc;
+    padding-left: 1rem;
+    color: #444;
+    background-color: #f9f9f9;
+    margin: 1rem 0;
+  }
+  
+  .icon,
+  .icon1 {
+    animation: floatIcon 8s ease-in-out infinite;
+  }
+  
+  @keyframes floatIcon {
+    
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  
+
+  
+  .level pre {
+    color: #003366;
+    font-family: 'Courier New', monospace;
+    padding: 0.98rem;
+    border-radius: 4px;
+    font-size: 0.97rem;
+    margin: 1rem auto;
+    border: 1px solid #ccc;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+    
+  }
+  
+  .level code {
+    color: #003366;
+    font-family: 'Courier New', monospace;
+    padding: 0.02rem 0.01rem;
+    font-size: 0.98rem;
+    border-inline-start: 0.00em solid #CCCCCC3B;
+    border-bottom: 0.001emsolid #CCCCCC3B;
+    border-radius: 6px;
+    overflow-wrap: break-word;
+  }
+body::selection {
+    background: rgba(0, 51, 102, 0.52); 
+    color:  #fff;
+}
+
+.BoxCode code {
+    color: #fff !important;
+}
+
+.BoxCode code:hover,
+.BoxCode pre,
+.BoxCode code {
+    background: none !important;
+}
+  .BoxCode pre {
+  font-size: none;
+  background: none;
+  max-width: 100%;
+}
+
+  .level code:hover {
+    
+    font-size: 0.99rem;
+    
+    background: #CCCCCC38;
+  }
+  
+  @media (min-width: 768px) {
+    .level pre {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+  }
+  
+
+  
+  .level a {
+    color: #2576B3;
+  }
+  
+  .level a:hover {
+    
+    color: #59A8EE;
+  }
+  
+  .level h4 {
+    color: #132D41;
+    font-size: 1rem;
+  }
+  
+  
